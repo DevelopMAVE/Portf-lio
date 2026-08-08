@@ -1,0 +1,384 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Francisco | Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul: #4070f4;
+    --azul-escuro: #0e1b3d;
+    --texto: #1c1c1c;
+    --texto-claro: #6c6c6c;
+    --branco: #ffffff;
+    --fundo-secao: #fafbff;
+    --sombra: 0 8px 24px rgba(64,112,244,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Poppins',sans-serif;color:var(--texto);line-height:1.6;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  section{padding:100px 8% 60px;}
+  .container{max-width:1100px;margin:0 auto;}
+
+  /* ===== HEADER ===== */
+  header{
+    position:fixed;top:0;left:0;width:100%;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 8%;background:rgba(255,255,255,.95);
+    backdrop-filter:blur(6px);z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,.04);
+  }
+  .logo{font-size:1.4rem;font-weight:700;color:var(--texto);}
+  .logo span{color:var(--azul);}
+  .nav-menu{display:flex;gap:36px;list-style:none;}
+  .nav-link{font-weight:500;font-size:.95rem;color:var(--texto);position:relative;padding-bottom:6px;transition:.3s;}
+  .nav-link.active,.nav-link:hover{color:var(--azul);}
+  .nav-link.active::after{
+    content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--azul);
+  }
+  .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;}
+  .nav-toggle span{width:26px;height:3px;background:var(--texto);border-radius:2px;transition:.3s;}
+
+  /* ===== HOME ===== */
+  #home{
+    min-height:100vh;display:flex;align-items:center;
+    padding-top:120px;
+  }
+  .home-grid{
+    display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;width:100%;
+  }
+  .home-eyebrow{color:var(--azul);font-weight:600;letter-spacing:1px;font-size:.9rem;text-transform:uppercase;}
+  .home-title{font-size:2.6rem;font-weight:700;line-height:1.25;margin:14px 0 22px;}
+  .home-title span{color:var(--azul);}
+  .btn{
+    display:inline-block;background:var(--azul);color:#fff;padding:13px 30px;
+    border-radius:6px;font-weight:600;font-size:.95rem;border:none;cursor:pointer;
+    transition:.3s;box-shadow:var(--sombra);
+  }
+  .btn:hover{background:var(--azul-escuro);transform:translateY(-2px);}
+  .socials{display:flex;gap:16px;margin-top:30px;}
+  .socials a{
+    width:38px;height:38px;border:1px solid #dfe4f5;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--azul);
+    transition:.3s;
+  }
+  .socials a:hover{background:var(--azul);color:#fff;}
+  .home-img-wrap{
+    position:relative;display:flex;justify-content:center;
+  }
+  .blob{
+    width:340px;height:340px;background:var(--azul);
+    border-radius:58% 42% 65% 35% / 45% 55% 45% 55%;
+    display:flex;align-items:flex-end;justify-content:center;overflow:hidden;
+  }
+  .blob img{width:100%;object-fit:cover;}
+
+  /* ===== TITULO DE SECÇÃO ===== */
+  .section-title{
+    text-align:center;color:var(--azul);font-weight:700;font-size:1.6rem;
+    margin-bottom:50px;position:relative;padding-bottom:10px;
+  }
+  .section-title::after{
+    content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+    width:36px;height:3px;background:var(--azul);border-radius:2px;
+  }
+
+  /* ===== ABOUT ===== */
+  #about{background:var(--fundo-secao);}
+  .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center;}
+  .about-photo{border-radius:12px;overflow:hidden;box-shadow:var(--sombra);}
+  .about-photo img{filter:grayscale(15%);}
+  .about-text h3{font-size:1.4rem;margin-bottom:14px;}
+  .about-text h3 span{color:var(--azul);}
+  .about-text p{color:var(--texto-claro);margin-bottom:14px;}
+  .about-stats{display:flex;gap:30px;margin-top:20px;}
+  .about-stats div{text-align:center;}
+  .about-stats strong{display:block;font-size:1.5rem;color:var(--azul);}
+  .about-stats small{color:var(--texto-claro);}
+
+  /* ===== SKILLS ===== */
+  .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .skill-item{margin-bottom:22px;}
+  .skill-top{display:flex;justify-content:space-between;font-weight:600;font-size:.9rem;margin-bottom:8px;}
+  .skill-bar{width:100%;height:8px;background:#e7ebfb;border-radius:6px;overflow:hidden;}
+  .skill-fill{
+    height:100%;background:linear-gradient(90deg,var(--azul),#7ba1ff);width:0;border-radius:6px;
+    transition:width 1.4s ease;
+  }
+  .skills-img{border-radius:12px;overflow:hidden;box-shadow:var(--sombra);}
+
+  /* ===== WORK ===== */
+  #work{background:var(--fundo-secao);}
+  .work-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  .work-item{
+    position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;
+  }
+  .work-item img{width:100%;height:100%;object-fit:cover;transition:.5s;}
+  .work-overlay{
+    position:absolute;inset:0;background:rgba(14,27,61,.75);
+    display:flex;align-items:center;justify-content:center;opacity:0;transition:.35s;
+    color:#fff;font-weight:600;font-size:.95rem;text-align:center;padding:14px;
+  }
+  .work-item:hover img{transform:scale(1.08);}
+  .work-item:hover .work-overlay{opacity:1;}
+
+  /* ===== CONTACT ===== */
+  .contact-form{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:18px;}
+  .contact-form input,.contact-form textarea{
+    width:100%;padding:14px 16px;border:1px solid #dfe4f5;border-radius:8px;
+    font-family:inherit;font-size:.95rem;outline:none;transition:.3s;background:#fff;
+  }
+  .contact-form input:focus,.contact-form textarea:focus{border-color:var(--azul);box-shadow:0 0 0 3px rgba(64,112,244,.12);}
+  .contact-form textarea{resize:vertical;min-height:140px;}
+  .contact-form button{align-self:flex-start;}
+  .form-msg{font-size:.85rem;color:var(--azul);display:none;}
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--azul-escuro);color:#fff;text-align:center;padding:46px 8% 26px;
+  }
+  footer h3{font-size:1.3rem;margin-bottom:16px;}
+  .footer-socials{display:flex;justify-content:center;gap:16px;margin-bottom:18px;}
+  .footer-socials a{
+    width:36px;height:36px;border:1px solid rgba(255,255,255,.25);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:#fff;transition:.3s;
+  }
+  .footer-socials a:hover{background:var(--azul);border-color:var(--azul);}
+  footer small{color:rgba(255,255,255,.55);}
+
+  /* ===== BOTÃO FLUTUANTE WHATSAPP ===== */
+  .whatsapp-float{
+    position:fixed;bottom:26px;right:26px;width:58px;height:58px;
+    background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);z-index:1000;transition:.3s;
+  }
+  .whatsapp-float:hover{transform:scale(1.08);}
+  .whatsapp-float svg{width:30px;height:30px;fill:#fff;}
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.show{opacity:1;transform:none;}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:900px){
+    .home-grid,.about-grid,.skills-grid{grid-template-columns:1fr;text-align:center;}
+    .home-img-wrap{order:-1;margin-bottom:20px;}
+    .about-photo{max-width:280px;margin:0 auto;}
+    .socials{justify-content:center;}
+    .about-stats{justify-content:center;}
+    .work-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:700px){
+    .nav-menu{
+      position:fixed;top:0;right:-100%;height:100vh;width:70%;background:#fff;
+      flex-direction:column;justify-content:center;align-items:center;gap:30px;
+      transition:.4s;box-shadow:-4px 0 20px rgba(0,0,0,.08);
+    }
+    .nav-menu.open{right:0;}
+    .nav-toggle{display:flex;}
+    .home-title{font-size:2rem;}
+    section{padding:90px 6% 50px;}
+    .work-grid{grid-template-columns:1fr;}
+    .blob{width:260px;height:260px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#home" class="logo">MAVE Services<span>.</span></a>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#home" class="nav-link active">Início</a></li>
+    <li><a href="#about" class="nav-link">Sobre</a></li>
+    <li><a href="#skills" class="nav-link">Habilidades</a></li>
+    <li><a href="#work" class="nav-link">Trabalhos</a></li>
+    <li><a href="#contact" class="nav-link">Contacto</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- HOME -->
+<section id="home">
+  <div class="container home-grid">
+    <div class="reveal show">
+      <p class="home-eyebrow">Olá, o meu nome é</p>
+      <h1 class="home-title">Francisco<br><span>Técnico de Suporte Informático</span></h1>
+      <a href="#contact" class="btn">Contactar</a>
+      <div class="socials">
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="GitHub">gh</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="https://wa.me/258851650936" target="_blank" aria-label="WhatsApp">wa</a>
+      </div>
+    </div>
+    <div class="home-img-wrap reveal show">
+      <div class="blob">
+        <img src="fnk.jpg" alt="Foto de perfil">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title">Sobre</h2>
+  <div class="container about-grid">
+    <div class="about-photo reveal">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80" alt="Francisco">
+    </div>
+    <div class="about-text reveal">
+      <h3>Eu sou o <span>Francisco</span></h3>
+      <p>Estudante de Informática no Instituto Médio Politécnico de Gorongosa, com interesse em redes de computadores, segurança da informação e programação.</p>
+      <p>Gosto de aprender fazendo -- desde a construção de pequenos sistemas em VBA até à escrita de artigos técnicos sobre infraestrutura de redes.</p>
+      <div class="about-stats">
+        <div><strong>3+</strong><small>Projetos</small></div>
+        <div><strong>2</strong><small>Áreas de foco</small></div>
+        <div><strong>100%</strong><small>Dedicação</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2 class="section-title">Habilidades</h2>
+  <div class="container skills-grid">
+    <div class="reveal">
+      <div class="skill-item">
+        <div class="skill-top"><span>Redes de Computadores</span><span>90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span>HTML &amp; CSS</span><span>65%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span>Manutenção</span><span>85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span>VBA / Excel</span><span>70%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+      </div>
+    </div>
+    <div class="skills-img reveal">
+      <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&q=80" alt="Trabalho em computador">
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <h2 class="section-title">Trabalhos</h2>
+  <div class="container work-grid">
+    <div class="work-item reveal">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&q=80" alt="Projeto 1">
+      <div class="work-overlay">Diagrama de Rede</div>
+    </div>
+    <div class="work-item reveal">
+      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500&q=80" alt="Projeto 2">
+      <div class="work-overlay">Sistema em VBA</div>
+    </div>
+    <div class="work-item reveal">
+      <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&q=80" alt="Projeto 3">
+      <div class="work-overlay">Artigo Académico</div>
+    </div>
+    <div class="work-item reveal">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&q=80" alt="Projeto 4">
+      <div class="work-overlay">Programação</div>
+    </div>
+    <div class="work-item reveal">
+      <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=500&q=80" alt="Projeto 5">
+      <div class="work-overlay">Segurança Informática</div>
+    </div>
+    <div class="work-item reveal">
+      <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=500&q=80" alt="Projeto 6">
+      <div class="work-overlay">Edição de Imagem</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="section-title">Contacto</h2>
+  <form class="contact-form reveal" id="contactForm">
+    <input type="text" name="nome" placeholder="Nome" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="mensagem" placeholder="Mensagem" required></textarea>
+    <button type="submit" class="btn">Enviar</button>
+    <span class="form-msg" id="formMsg">Mensagem enviada com sucesso!</span>
+  </form>
+</section>
+
+<footer>
+  <h3>MAVE Service</h3>
+  <div class="footer-socials">
+    <a href="#" aria-label="LinkedIn">in</a>
+    <a href="#" aria-label="GitHub">gh</a>
+    <a href="#" aria-label="Instagram">ig</a>
+    <a href="https://wa.me/258851650936" target="_blank" aria-label="WhatsApp">wa</a>
+  </div>
+  <small>&copy; 2026 MAVE Service. Todos os direitos reservados.</small>
+</footer>
+
+<a href="https://wa.me/258851650936?text=Ol%C3%A1%20Francisco%2C%20vi%20o%20teu%20portf%C3%B3lio%20e%20gostava%20de%20falar%20contigo."
+   class="whatsapp-float" target="_blank" aria-label="Enviar mensagem no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.9-.4-1.8-1-2.6-1.8-.7-.7-1.3-1.5-1.7-2.3-.1-.2-.1-.4.1-.6.2-.2.6-.6.8-.8.2-.2.2-.4.1-.6-.1-.2-.6-1.5-.9-2-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.7.7-1 1.5-1 2.5.1 1.1.6 2.2 1.4 3.3 1.5 2 3.3 3.6 5.5 4.5 1.2.5 2.1.5 2.9.3.7-.2 1.4-.8 1.8-1.5.2-.3.2-.7.1-1-.1-.2-.3-.3-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5C8.3 21.5 10.1 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.7 0-3.3-.5-4.7-1.3l-.3-.2-3.1 1 1-3-.2-.3C3.8 15 3.2 13.5 3.2 12 3.2 7.2 7.2 3.2 12 3.2S20.8 7.2 20.8 12 16.8 20.2 12 20.2z"/></svg>
+</a>
+
+<script>
+  // Menu mobile
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+  document.querySelectorAll('.nav-link').forEach(link=>{
+    link.addEventListener('click', () => navMenu.classList.remove('open'));
+  });
+
+  // Link ativo conforme secção visível
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-link');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 140;
+      if(window.scrollY >= top) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // Revelar elementos e animar barras de habilidade ao entrar na vista
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+        entry.target.querySelectorAll('.skill-fill').forEach(fill => {
+          fill.style.width = fill.dataset.width + '%';
+        });
+      }
+    });
+  }, {threshold:.2});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Formulário de contacto (demo local, sem backend)
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const msg = document.getElementById('formMsg');
+    msg.style.display = 'inline-block';
+    this.reset();
+    setTimeout(()=> msg.style.display='none', 4000);
+  });
+</script>
+
+</body>
+</html>
